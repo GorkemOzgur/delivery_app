@@ -33,28 +33,19 @@ class _LoginRequestState extends State<LoginRequest>{
   Map autKey;
   String calisKey;
   ApiEndpoints apiEndpoints = new ApiEndpoints();
-  Future<String> getHttpResponselogin(String pathParam) async {
-    String url = apiEndpoints.login;
-    String url2 = apiEndpoints.order;
-    String url3 = 'http://167.172.166.88:8080/api/userAccount/$pathParam/login';
+
+  void login(String username, String password)  async {
+    String url3 = 'http://167.172.166.88:8080/api/userAccount/driver/login';
     Map<String, String> headers = new HashMap();
     headers['Accept'] = 'application/json';
     headers['Content-type'] = 'application/json';
-    Http.response response =  await Http.post(
-        url,
+    Http.Response response =  await Http.post(
+        url3,
         headers: headers,
         body: jsonEncode({'username': username, 'password': password}),
         encoding: Encoding.getByName('utf-8')
     );
-    if(response.statusCode==200){
-      autKey=json.decode(response.body);
-      calisKey = autKey['Authorization'];
 
-
-  }
-  void login(String username, String password)  async {
-
-    /*
     if(response.statusCode==200){
       autKey=json.decode(response.body);
       calisKey = autKey['Authorization'];
@@ -65,7 +56,7 @@ class _LoginRequestState extends State<LoginRequest>{
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
     print(calisKey);
-*/
+
   }
   @override
   Widget build(BuildContext context) {
