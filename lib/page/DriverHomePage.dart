@@ -9,6 +9,18 @@ class DriverHomePage extends StatefulWidget {
 }
 class _DriverHomePage extends State<DriverHomePage>{
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
+  void dispose(){
+    super.dispose();
+  }
+
+
+
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(

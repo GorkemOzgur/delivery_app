@@ -5,7 +5,7 @@ class UserContext {
     return authorization;
   }
   void setAuthorization(String authorization){
-    authorization = authorization;
+    UserContext.authorization = authorization;
   }
 
 }
