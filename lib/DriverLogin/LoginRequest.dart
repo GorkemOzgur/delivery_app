@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'dart:convert';
 import 'package:delivery_app/DriverLogin/DriverPage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as Http;
 import 'package:flutter/material.dart';
 
@@ -27,9 +28,13 @@ class _LoginRequestState extends State<LoginRequest>{
   static final TextEditingController _password = new TextEditingController();
   Map autKey;
   String parsingKey;
+  int AdminOrDriverKey = 0;  //0 ise Driver,   1 ise Admin
+  String AdminOrDriver ="driver";
+  Color etoGreen = Color(0xff41B883);
+  Color etoBlack = Color(0xff35495E);
 
-  void login(String username, String password)  async {
-    String url3 = 'http://167.172.166.88:8080/api/userAccount/driver/login';
+  void login(String username, String password, String AdminOrDriver)  async {
+    String url3 = 'http://167.172.166.88:8080/api/userAccount/$AdminOrDriver/login';
     Map<String, String> headers = new HashMap();
     headers['Accept'] = 'application/json';
     headers['Content-type'] = 'application/json';
@@ -118,18 +123,25 @@ class _LoginRequestState extends State<LoginRequest>{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   RaisedButton(
-                    color: Color(0xff41B883),
+                    color:   AdminOrDriverKey == 0 ? etoGreen : etoBlack,
                     onPressed: (){
-                      print("");
+                      setState(() {
+                        AdminOrDriver="driver";
+                        AdminOrDriverKey = 0;
+                      });
                     },
 
                     child: Text("Motorcu"),
                   ),
 
                   RaisedButton(
-                    color: Color(0xff35495E),
+                    color: AdminOrDriverKey == 1 ? etoGreen : etoBlack,
+
                     onPressed: (){
-                      print("");
+                      setState(() {
+                        AdminOrDriver="admin";
+                        AdminOrDriverKey = 1;
+                      });
                     },
 
                     child: Text("Admin"),
@@ -140,8 +152,8 @@ class _LoginRequestState extends State<LoginRequest>{
               ),
 
               Container(
-                height: MediaQuery.of(context).size.height/2,
-                padding: EdgeInsets.all(16),
+
+                padding: EdgeInsets.all(25),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -152,7 +164,8 @@ class _LoginRequestState extends State<LoginRequest>{
 
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),),
+                        prefixIcon: Icon(Icons.person,color: Color(0xff41B883),),
                         hintText: "Kullanıcı adını giriniz",
                         labelText: "Kullanıcı adı",
                       ),
@@ -167,7 +180,8 @@ class _LoginRequestState extends State<LoginRequest>{
                       keyboardType: TextInputType.number,
                       obscureText: true,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),),
+                        prefixIcon: Icon(Icons.vpn_key,color: Color(0xff41B883),),
                         hintText: "Şifrenizi giriniz",
                         labelText: "Şifre",
                       ),
@@ -176,14 +190,18 @@ class _LoginRequestState extends State<LoginRequest>{
                     SizedBox(
                       height: 20.0,
                     ),
-                    RaisedButton(
-                      color: Color(0xff41B883),
-                      onPressed: (){
-                        login(_username.text,_password.text);
+                    ButtonTheme(
+                      height: 50,
+                      minWidth: 340,
+                      child: RaisedButton(
+                        color: Color(0xff41B883),
+                        onPressed: (){
+                          login(_username.text,_password.text,AdminOrDriver);
 
-                      },
+                        },
 
-                      child: Text("Giriş Yap"),
+                        child: Text("Giriş Yap"),
+                      ),
                     ),
 
                   ],
