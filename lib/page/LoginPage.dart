@@ -1,23 +1,18 @@
-import 'dart:collection';
-import 'dart:convert';
-import 'package:delivery_app/DriverLogin/DriverPage.dart';
+import 'package:delivery_app/httpRequest/LoginRequest.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart' as Http;
 import 'package:flutter/material.dart';
 
-
-
-class LoginRequest extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
   _LoginRequestState createState() => new _LoginRequestState();
 }
-class _LoginRequestState extends State<LoginRequest>{
 
-
+class _LoginRequestState extends State<LoginPage>{
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
   }
   @override
   void dispose(){
@@ -28,35 +23,13 @@ class _LoginRequestState extends State<LoginRequest>{
   static final TextEditingController _password = new TextEditingController();
   Map autKey;
   String parsingKey;
-  int AdminOrDriverKey = 0;  //0 ise Driver,   1 ise Admin
-  String AdminOrDriver ="driver";
+  int adminOrDriverKey = 0;  //0 ise Driver,   1 ise Admin
+  String adminOrDriver ="driver";
   Color etoGreen = Color(0xff41B883);
   Color etoBlack = Color(0xff35495E);
+  LoginRequest loginRequest = new LoginRequest();
+  
 
-  void login(String username, String password, String AdminOrDriver)  async {
-    String url3 = 'http://167.172.166.88:8080/api/userAccount/$AdminOrDriver/login';
-    Map<String, String> headers = new HashMap();
-    headers['Accept'] = 'application/json';
-    headers['Content-type'] = 'application/json';
-    Http.Response response =  await Http.post(
-        url3,
-        headers: headers,
-        body: jsonEncode({'username': username, 'password': password}),
-        encoding: Encoding.getByName('utf-8')
-    );
-
-    if(response.statusCode==200){
-      autKey=json.decode(response.body);
-      parsingKey = autKey['Authorization'];
-        Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new DriverPage(ParsedKey:parsingKey,)));
-
-
-    }
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
-    print(parsingKey);
-
-  }
   @override
   Widget build(BuildContext context) {
 
@@ -123,11 +96,11 @@ class _LoginRequestState extends State<LoginRequest>{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   RaisedButton(
-                    color:   AdminOrDriverKey == 0 ? etoGreen : etoBlack,
+                    color:   adminOrDriverKey == 0 ? etoGreen : etoBlack,
                     onPressed: (){
                       setState(() {
-                        AdminOrDriver="driver";
-                        AdminOrDriverKey = 0;
+                        adminOrDriver="driver";
+                        adminOrDriverKey = 0;
                       });
                     },
 
@@ -135,12 +108,12 @@ class _LoginRequestState extends State<LoginRequest>{
                   ),
 
                   RaisedButton(
-                    color: AdminOrDriverKey == 1 ? etoGreen : etoBlack,
+                    color: adminOrDriverKey == 1 ? etoGreen : etoBlack,
 
                     onPressed: (){
                       setState(() {
-                        AdminOrDriver="admin";
-                        AdminOrDriverKey = 1;
+                        adminOrDriver="admin";
+                        adminOrDriverKey = 1;
                       });
                     },
 
@@ -196,7 +169,7 @@ class _LoginRequestState extends State<LoginRequest>{
                       child: RaisedButton(
                         color: Color(0xff41B883),
                         onPressed: (){
-                          login(_username.text,_password.text,AdminOrDriver);
+                          loginRequest.login(context, _username.text,_password.text,adminOrDriver);
 
                         },
 
@@ -215,7 +188,6 @@ class _LoginRequestState extends State<LoginRequest>{
     );
   }
 }
-
 
 
 
