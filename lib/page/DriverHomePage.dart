@@ -1,3 +1,4 @@
+import 'package:delivery_app/httpRequest/OrderRequest.dart';
 import 'package:delivery_app/source/UserContext.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,9 @@ class _DriverHomePage extends State<DriverHomePage>{
         _sayfaGecisYuklenmeYuvarlagi = false;
       });
     });
+
+    OrderRequest orderRequest = new OrderRequest();
+    orderRequest.driver();
 
   }
   @override

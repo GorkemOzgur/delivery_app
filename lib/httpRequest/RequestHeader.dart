@@ -13,7 +13,6 @@ class RequestHeader {
   static Map<String, String> getRequestHeaderWithAuthorization(){
     Map<String, String> header = new HashMap();
     header['Accept'] = 'application/json';
-    header['Content-type'] = 'application/json';
     header['Authorization'] = new UserContext().getAuthorization();
     return header;
   }
