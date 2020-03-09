@@ -8,17 +8,22 @@ class DriverHomePage extends StatefulWidget {
   _DriverHomePage createState() => _DriverHomePage();
 }
 class _DriverHomePage extends State<DriverHomePage>{
+  bool _sayfaGecisYuklenmeYuvarlagi = true ;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    Future.delayed(Duration(seconds: 1), () {
+      setState(() {
+        _sayfaGecisYuklenmeYuvarlagi = false;
+      });
+    });
+
   }
   @override
   void dispose(){
     super.dispose();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,7 @@ class _DriverHomePage extends State<DriverHomePage>{
     return Scaffold(
 
       body: Center(
-        child: Text(new UserContext().getAuthorization()),
+        child: _sayfaGecisYuklenmeYuvarlagi ? CircularProgressIndicator() :Text(new UserContext().getAuthorization()),
       ),
 
     );

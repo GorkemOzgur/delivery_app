@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
+
   @override
   _LoginRequestState createState() => new _LoginRequestState();
 }
@@ -28,7 +29,7 @@ class _LoginRequestState extends State<LoginPage>{
   Color etoGreen = Color(0xff41B883);
   Color etoBlack = Color(0xff35495E);
   LoginRequest loginRequest = new LoginRequest();
-  
+  bool textFieldValidator = false;
 
   @override
   Widget build(BuildContext context) {
@@ -160,26 +161,38 @@ class _LoginRequestState extends State<LoginPage>{
                       ),
                     ),
 
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    ButtonTheme(
+
+                  ],
+                ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 25.0),
+                    child: ButtonTheme(
                       height: 50,
-                      minWidth: 340,
                       child: RaisedButton(
                         color: Color(0xff41B883),
                         onPressed: (){
                           loginRequest.login(context, _username.text,_password.text,adminOrDriver);
 
                         },
+                        shape: RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(10.0),
+
+                        ),
+                        splashColor: etoBlack,
 
                         child: Text("Giriş Yap"),
                       ),
                     ),
+                  ),
 
-                  ],
-                ),
-              ),
+                ],),
+
+
             ],
           ),
 
