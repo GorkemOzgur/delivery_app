@@ -9,7 +9,7 @@ import 'package:http/http.dart' as Http;
 
 class OrderRequest{
 
-  void driver() async{
+  Future<List<Order>> driver() async{
     OrderEndpoints orderEndpoints = new OrderEndpoints("driver");
 
     Http.Response response =  await Http.get(
@@ -23,10 +23,10 @@ class OrderRequest{
 //      print("------------------------------------------");
         OrderSerializer orderSerializer = new OrderSerializer();
         List<Order> orders = orderSerializer.decodeOrderList(response.body);
-        for(Order order in orders){
-          print(order.address);
-        }
+
+        return orders;
     }
 
   }
+
 }
