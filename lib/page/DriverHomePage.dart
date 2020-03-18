@@ -114,7 +114,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           child: ListView(
              children: <Widget>[
-               _buildOrderOrHistory(),
+               _buildOrderOrHistory(context),
                ListView(
                  shrinkWrap: true,
                  scrollDirection: Axis.vertical,
@@ -144,33 +144,54 @@ class _DriverHomePageState extends State<DriverHomePage> {
     );
   }
 }
-_buildOrderOrHistory() {
-  return Center(
-    child: ButtonBar(
-      mainAxisSize: MainAxisSize.min,
+_buildOrderOrHistory(BuildContext context) {
+  return Container(
+
+    child: Column(
+
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
       children: <Widget>[
-        MaterialButton(
-          minWidth: 183,
-          color: Color(0xff41B883),
-          child: Text(
-            'Sipariş Talepleri',
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
 
+          child: ButtonBar(
+
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              SizedBox(
+                width: (MediaQuery.of(context).size.width/2)-22,
+
+                child: MaterialButton(
+
+                  color: Color(0xff41B883),
+                  child: Text(
+                    'Sipariş Talepleri',
+
+                  ),
+                  onPressed: () {
+
+                  },
+                ),
+              ),
+              SizedBox(
+
+                width: (MediaQuery.of(context).size.width/2)-22,
+                child: MaterialButton(
+
+
+                  child: Text(
+                    'Geçmiş Siparişler',
+
+                  ),
+                  color: Colors.blueGrey,
+                  onPressed: () {
+
+                  },
+                ),
+              ),
+            ],
           ),
-          onPressed: () {
-
-          },
-        ),
-        MaterialButton(
-          minWidth: 183,
-
-          child: Text(
-            'Geçmiş Siparişler',
-
-          ),
-          color: Colors.blueGrey,
-          onPressed: () {
-
-          },
         ),
       ],
     ),
@@ -178,7 +199,7 @@ _buildOrderOrHistory() {
 }
 DriverFood(BuildContext context){
   return Padding(
-    padding: const EdgeInsets.all(16.0),
+    padding: const EdgeInsets.all(4.0),
     child: Container(
       width: MediaQuery.of(context).size.width,
       child:  Material(
@@ -216,9 +237,7 @@ DriverFood(BuildContext context){
                                      ]
                                   )
                                 ),
-SizedBox(
-  width: 205,
-),
+
                                     Container(
 
                                       child: Text('19:02',
@@ -261,7 +280,7 @@ SizedBox(
                               children: <Widget>[
                                 SizedBox(
                                   height: 35,
-                                  width: 99,
+                                  width: MediaQuery.of(context).size.width/4,
                                   child: MaterialButton(
                                     onPressed:() {print("some");},
                                     child: Text(
@@ -281,7 +300,7 @@ SizedBox(
 
                                 SizedBox(
                                   height: 35,
-                                  width: 99,
+                                  width: MediaQuery.of(context).size.width/4,
                                   child: MaterialButton(
                                     onPressed:() {print("some");},
                                     child: Text(
@@ -298,7 +317,7 @@ SizedBox(
                                 ),
                                 SizedBox(
                                   height: 35,
-                                  width: 99,
+                                  width: MediaQuery.of(context).size.width/4,
                                   child: MaterialButton(
                                     onPressed:() {print("some");},
                                     child: Text(
