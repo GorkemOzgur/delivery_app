@@ -213,7 +213,7 @@ DriverFood(BuildContext context){
                 Expanded(
                   child: Container(
                     child: Padding(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -223,6 +223,7 @@ DriverFood(BuildContext context){
                             child: Column(
                               children: <Widget>[
                                 Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween ,
                                   children: <Widget>[
                                     RichText(
                                       text: TextSpan(
@@ -238,11 +239,8 @@ DriverFood(BuildContext context){
                                   )
                                 ),
 
-                                    Container(
-
-                                      child: Text('19:02',
-                                        style: TextStyle( fontSize: 15.0,),),
-                                    ),
+                                Text('19:02',
+                                      style: TextStyle( fontSize: 15.0,),),
                                   ],
                                 ),
 
