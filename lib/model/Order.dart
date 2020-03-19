@@ -1,5 +1,6 @@
 import 'package:delivery_app/model/Office.dart';
 import 'package:delivery_app/model/OrderType.dart';
+import 'package:delivery_app/model/Payment.dart';
 import 'package:delivery_app/model/PaymentMethod.dart';
 import 'package:delivery_app/model/User.dart';
 
@@ -14,7 +15,7 @@ class Order{
   bool canceled;
   bool completed;
   OrderType orderType;
-  PaymentMethod paymentMethod;
+  Payment payment;
   double price;
   int numberOfInstallment;
   String created;
@@ -27,7 +28,7 @@ class Order{
   Order(
   {this.id, this.cargoId, this.sender, this.driver, this.office,
       this.address, this.expectedArrivalTime, this.canceled, this.completed,
-      this.orderType, this.paymentMethod, this.price, this.numberOfInstallment,
+      this.orderType, this.payment, this.price, this.numberOfInstallment,
       this.created, this.accepted, this.received,
       this.delivered });
 
@@ -44,7 +45,7 @@ class Order{
         canceled: val["canceled"],
         completed: val["completed"],
         orderType: val["orderType"] == null ? null : OrderType.fromJson(val["orderType"]),
-        paymentMethod: val["paymentMethod"] == null ? null : PaymentMethod.fromJson(val["paymentMethod"]),
+        payment: val["payment"] == null ? null : Payment.fromJson(val["payment"]),
         price: val["price"],
         numberOfInstallment: val["numberOfInstallment"],
         created: val["created"],
@@ -53,7 +54,6 @@ class Order{
         delivered: val["delivered"]
     );
   }
-
 
 
 

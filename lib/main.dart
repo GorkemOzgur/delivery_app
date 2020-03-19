@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DriverHomePage(),
+      home: LoginPage(),
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),

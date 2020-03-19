@@ -10,6 +10,10 @@ class OrderSerializer {
     for(int i=0;i<iterable.length;i++){
       orders.add(Order.fromJson(iterable.elementAt(i)));
     }
+
+    for(Order order in orders)
+      print(order.toString());
+
     return orders;
   }
 }
