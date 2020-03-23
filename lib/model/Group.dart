@@ -2,8 +2,8 @@ class Group{
   int id;
   String name;
   bool beInUse;
-  DateTime created;
-  DateTime updated;
+  String created;
+  String updated;
 
   Group({this.id, this.name, this.beInUse, this.created, this.updated});
 
