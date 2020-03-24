@@ -36,13 +36,9 @@ class _DriverHomePageState extends State<DriverHomePage> {
     OrderRow orderRow = new OrderRow();
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40),
-        child: AppBar(
-          automaticallyImplyLeading: false,
-          flexibleSpace: new MyAppbar("previouspage", context).get(), //previouspage homepage olarak değiştirilecek,
+      appBar: AppBar(
+         flexibleSpace: new MyAppbar("previouspage", context).get(), //previouspage homepage olarak değiştirilecek,
 
-        ),
       ),
       body: Container(
         decoration: BoxDecoration(

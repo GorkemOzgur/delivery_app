@@ -37,12 +37,12 @@ class MyAppbar{
           Text('MOTORCU', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500,color: Colors.white),),
 
           Container(
+            height: double.infinity,
             child: Material(
 
                 color: DeliveryColor.darkBlue,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40),
-
+                  bottomLeft: Radius.circular(40),
                 ),
                 child: IconButton(icon: Icon(Icons.close),color: Colors.white, onPressed: (){})
             ),

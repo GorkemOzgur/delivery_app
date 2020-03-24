@@ -215,11 +215,27 @@ class OrderRow {
           );
         }
         if (!snapshot.hasData) {
-          return Center(
-            child: CircularProgressIndicator(
-              backgroundColor: DeliveryColor.activeButtonColor,
+          return Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                // This makes the blue container full width.
+                Expanded(
+                  child: Container(
+                    height: 50.0,
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        backgroundColor: DeliveryColor.activeButtonColor,
+
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           );
+
         }
       },
     );
