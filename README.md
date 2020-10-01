@@ -1,14 +1,13 @@
 # delivery app
 
+<img src="https://cdn.discordapp.com/attachments/728531712405012501/761310300824797184/Screenshot_2020-10-01-22-34-40-758_com.example.delivery_app.jpg" width="250px;" align="right">
+
+
 The project aims local food delivery services which has partnership with restaurants.
 
 A mobile real time application which informs carriers about order details which are restaurant and package. 
 
 The main functionality is accepting the orders with a time parameter which will be used by restaurants and the center of carriers. 
-
-
-
-<img src="https://cdn.discordapp.com/attachments/728531712405012501/761310300824797184/Screenshot_2020-10-01-22-34-40-758_com.example.delivery_app.jpg" width="250px;" align="right">
 
 
 ## Getting Started
