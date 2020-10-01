@@ -6,11 +6,11 @@ A mobile real time application which informs carriers about order details which 
 
 The main functionality is accepting the orders with a time parameter which will be used by restaurants and the center of carriers. 
 
-<p align="center">
 
-<img src="https://cdn.discordapp.com/attachments/728531712405012501/761310300824797184/Screenshot_2020-10-01-22-34-40-758_com.example.delivery_app.jpg" width="250px;">
 
-</p>
+<img src="https://cdn.discordapp.com/attachments/728531712405012501/761310300824797184/Screenshot_2020-10-01-22-34-40-758_com.example.delivery_app.jpg" width="250px;" align="right">
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
